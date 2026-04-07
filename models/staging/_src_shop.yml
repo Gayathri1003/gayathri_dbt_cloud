@@ -1,0 +1,10 @@
+sources:
+  - name: shop_src
+    database: GAYATHRI_DBT_CLOUD
+    schema: GAYATHRI_RAW_SCHEMA 
+    tables:
+      - name: orders
+      - name: customers
+      - name: HR
+      - name : IT
+      - name : Finance 

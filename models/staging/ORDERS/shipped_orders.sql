@@ -1,7 +1,8 @@
 {{
 
     config (
-        materialized = 'table'
+        materialized = 'view',
+        schema = 'Gayathri_raw_schema'
     )
 }}
 
@@ -14,7 +15,7 @@ WITH source AS (
         total_amount::NUMERIC(10,2) AS total_amount,
         payment_method::STRING AS payment_method
     FROM 
-        gayathri_dbt_cloud.gayathri_raw_schema.orders
+        {{ source('shop_src', 'orders') }}
 ),
 
 cleaned AS (
@@ -27,7 +28,7 @@ cleaned AS (
         total_amount,
         payment_method
     FROM source
-    WHERE status != 'cancelled'
+    WHERE status = 'shipped'
 )
 
 SELECT * FROM cleaned
