@@ -1,6 +1,5 @@
 {{ config(
-    materialized='table',
-    schema='DBT_CLOUD'
+    materialized='table'
 ) }}
 
 -- Get all tables from RAW schema

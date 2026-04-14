@@ -1,9 +1,9 @@
-{% set tables = ['HR', 'IT', 'Finance'] %}
+{% set tables = ['HR', 'Finance', 'IT'] %}
 
 {% for table in tables %}
 
 SELECT *
-FROM {{ source('shop_src', table) }}
+FROM {{ ref('stg_dept_' ~ table) }}
 
 {% if not loop.last %}
 UNION ALL
